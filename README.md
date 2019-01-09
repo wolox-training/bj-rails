@@ -1,1 +1,1 @@
-# bj-rails
+# bj-vue
