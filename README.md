@@ -1,24 +1,34 @@
-# README
+# wolox-books
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project setup
+```
+yarn install
+```
 
-Things you may want to cover:
+### Compiles and hot-reloads for development
+```
+yarn run serve
+```
 
-* Ruby version
+### Compiles and minifies for production
+```
+yarn run build
+```
 
-* System dependencies
+### Run your tests
+```
+yarn run test
+```
 
-* Configuration
+### Lints and fixes files
+```
+yarn run lint
+```
 
-* Database creation
+### Run your unit tests
+```
+yarn run test:unit
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
