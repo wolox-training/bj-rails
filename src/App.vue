@@ -10,13 +10,12 @@ export default {};
 <style lang="scss">
 @import "scss/application";
 #app {
-  align-items: center;
   color: #2c3e50;
   display: flex;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: center;
   text-align: center;
 }

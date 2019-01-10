@@ -5,9 +5,10 @@
   height: 40px;
   margin: 10px 0;
   outline: 0;
+  width: 100%;
 }
 
-.primaryButton {
+.primary-button {
   @extend %base-button;
   background-color: $green;
   border: 0;
@@ -15,7 +16,7 @@
   color: $white;
 }
 
-.secondaryButton {
+.secondary-button {
   @extend %base-button;
   background-color: $white;
   border: 1px solid $green;
@@ -25,6 +26,7 @@
 
 .label {
   align-self: flex-start;
+  font-size: 14px;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -35,4 +37,18 @@
   height: 30px;
   outline: 0;
   padding: 5px;
+}
+
+.error-label {
+  color: $red;
+  font-size: 14px;
+  margin: 5px auto;
+}
+
+.error-input {
+  border: 1px solid $red;
+}
+
+.valid-input {
+  border: 1px solid $green;
 }
