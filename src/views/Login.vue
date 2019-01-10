@@ -1,39 +1,98 @@
 <template>
   <div class="container">
     <img src="../assets/wolox-logo.png" class="logo">
-    <div class="input-container">
-      <label for="name" class="label">First name</label>
-      <input id="name" class="input" v-model="firstName">
-    </div>
-    <div class="input-container">
-      <label for="name" class="label">Last name</label>
-      <input id="name" class="input" v-model="lastName">
-    </div>
-    <div class="input-container">
-      <label for="name" class="label">Email</label>
-      <input id="name" class="input" v-model="email">
-    </div>
-    <div class="input-container">
-      <label for="name" class="label">Password</label>
-      <input id="name" class="input" v-model="password" type="password">
-    </div>
-    <button :class="'primaryButton'" @click="printForm">Sign up</button>
+    <form @submit.prevent="onSubmit">
+      <!-- First Name -->
+      <div class="input-container">
+        <label for="name" class="label">First name</label>
+        <input
+          id="firstName"
+          v-model="$v.firstName.$model"
+          :class="['input', $v.firstName.$dirty && !$v.firstName.$error ? 'valid-input' : $v.firstName.$error ? 'error-input' : '']"
+        >
+      </div>
+      <!-- Last Name -->
+      <div class="input-container">
+        <label for="lastName" class="label">Last name</label>
+        <input
+          id="lastName"
+          v-model="$v.lastName.$model"
+          :class="['input', $v.lastName.$dirty && !$v.lastName.$error ? 'valid-input' : $v.lastName.$error ? 'error-input' : '']"
+        >
+      </div>
+      <!-- Email -->
+      <div class="input-container">
+        <label for="email" class="label">Email</label>
+        <input
+          id="email"
+          v-model="email"
+          :class="['input',
+            ($v.email.$invalid && submitted) || !$v.email.email
+              ? 'error-input'
+              : $v.email.email && !$v.email.$invalid ? 'valid-input' : '']"
+        >
+        <span class="error-label" v-if="!$v.email.email">El email no tiene un formato válido</span>
+        <span class="error-label" v-if="!$v.email.required && submitted">Campo requerido</span>
+      </div>
+      <!-- Password -->
+      <div class="input-container">
+        <label for="password" class="label">Password</label>
+        <input
+          id="password"
+          type="password"
+          v-model="$v.password.$model"
+          :class="['input', $v.password.$error ? 'error-input': !$v.password.$error && $v.password.$dirty ? 'valid-input' : '']"
+        >
+        <span class="error-label" v-if="!$v.password.required && submitted">Campo requerido</span>
+        <span
+          class="error-label"
+          v-if="$v.password.$dirty && !$v.password.hasNumber"
+        >El password debe contener al menos un número</span>
+        <span
+          class="error-label"
+          v-if="$v.password.$dirty && !$v.password.hasUppercase"
+        >El password debe contener al menos una mayúscula</span>
+      </div>
+
+      <button class="primary-button">Sign up</button>
+    </form>
     <div class="horizontal-division"/>
-    <button :class="'secondaryButton'">Login</button>
+    <button class="secondary-button">Login</button>
   </div>
 </template>
 
 <script>
+import { required, minLength, email } from "vuelidate/lib/validators";
+import { hasNumber, hasUppercase } from "@/utils/validations.js";
+
 export default {
   name: "home",
   components: {},
   data() {
     return {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      submitted: false
     };
+  },
+  validations: {
+    firstName: {
+      required
+    },
+    lastName: {
+      required
+    },
+    email: {
+      required,
+      email
+    },
+    password: {
+      required,
+      hasNumber,
+      hasUppercase
+    }
   },
   methods: {
     generateObject() {
@@ -47,7 +106,8 @@ export default {
       };
       return formObject;
     },
-    printForm() {
+    onSubmit() {
+      this.submitted = true;
       console.log(this.generateObject());
     }
   }
@@ -62,6 +122,7 @@ export default {
   border-top: 5px solid $scooter;
   display: flex;
   flex-direction: column;
+  margin: 100px;
   padding: 0 15px;
   width: 300px;
 }
@@ -74,7 +135,7 @@ export default {
 .input-container {
   display: flex;
   flex-direction: column;
-  margin: 10px auto;
+  margin: 15px auto;
   width: 100%;
 }
 
