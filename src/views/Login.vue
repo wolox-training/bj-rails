@@ -19,7 +19,7 @@
     </div>
     <button :class="'primaryButton'" @click="printForm">Sign up</button>
     <div class="horizontal-division"/>
-    <button :class="'secondaryButton'">Login</button>
+    <a :class="'secondaryButton'">Login</a>
   </div>
 </template>
 
