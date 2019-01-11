@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "../scss/commons/colors.scss";
 .container {
   background-color: $light-grey;
