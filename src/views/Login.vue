@@ -111,7 +111,6 @@ export default {
     },
     onSubmit () {
       this.submitted = true
-      debugger
       if (!this.$v.$invalid) {
         const userData = this.generateObject()
         signUp(userData)
