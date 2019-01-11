@@ -17,7 +17,7 @@
       <label for="name" class="label">Password</label>
       <input id="name" class="input" v-model="password" type="password">
     </div>
-    <button :class="'primaryButton'" @click="printForm">Sign up</button>
+    <button class="primaryButton" @click="printForm">Sign up</button>
     <div class="horizontal-division"/>
     <a :class="'secondaryButton'">Login</a>
   </div>
