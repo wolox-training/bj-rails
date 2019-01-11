@@ -62,20 +62,21 @@
 </template>
 
 <script>
-import { required, minLength, email } from "vuelidate/lib/validators";
-import { hasNumber, hasUppercase } from "@/utils/validations.js";
+import { required, email } from 'vuelidate/lib/validators'
+import { hasNumber, hasUppercase } from '@/utils/validations.js'
+import { signUp } from '@/services/auth'
 
 export default {
-  name: "home",
+  name: 'home',
   components: {},
-  data() {
+  data () {
     return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
       submitted: false
-    };
+    }
   },
   validations: {
     firstName: {
@@ -95,23 +96,29 @@ export default {
     }
   },
   methods: {
-    generateObject() {
+    generateObject () {
       const formObject = {
         user: {
           first_name: this.firstName,
           last_name: this.lastName,
           email: this.email,
-          password: this.password
+          password: this.password,
+          password_confirmation: this.password,
+          locale: 'es'
         }
-      };
-      return formObject;
+      }
+      return formObject
     },
-    onSubmit() {
-      this.submitted = true;
-      console.log(this.generateObject());
+    onSubmit () {
+      this.submitted = true
+      debugger
+      if (!this.$v.$invalid) {
+        const userData = this.generateObject()
+        signUp(userData)
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
