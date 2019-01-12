@@ -19,7 +19,7 @@ export default new Router({
       component: Login
     },
     {
-      path: '/', redirect: '/sign-up'
+      path: '/', redirect: '/login'
     }
   ]
 })
