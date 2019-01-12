@@ -103,7 +103,6 @@ export default {
         if (response.ok) {
           this.$router.push('/login')
         } else {
-          debugger
           this.formError =
             response.data && response.data.error && response.data.error[0]
         }
