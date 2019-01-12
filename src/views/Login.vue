@@ -36,18 +36,18 @@
 </template>
 
 <script>
-import { required, email } from "vuelidate/lib/validators";
-import { hasNumber, hasUppercase } from "@/utils/validations.js";
+import { required, email } from 'vuelidate/lib/validators'
+import { hasNumber, hasUppercase } from '@/utils/validations.js'
 
 export default {
-  name: "login",
+  name: 'login',
   components: {},
-  data() {
+  data () {
     return {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       submitted: false
-    };
+    }
   },
   validations: {
     email: {
@@ -61,11 +61,11 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
-      console.log("You're in!");
+    onSubmit () {
+      console.log("You're in!")
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

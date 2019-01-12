@@ -47,22 +47,22 @@
 </template>
 
 <script>
-import { required, email } from "vuelidate/lib/validators";
-import { hasNumber, hasUppercase } from "@/utils/validations.js";
-import { signUp } from "@/services/auth";
+import { required, email } from 'vuelidate/lib/validators'
+import { hasNumber, hasUppercase } from '@/utils/validations.js'
+import { signUp } from '@/services/auth'
 
 export default {
-  name: "home",
+  name: 'home',
   components: {},
-  data() {
+  data () {
     return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
       submitted: false,
-      formError: ""
-    };
+      formError: ''
+    }
   },
   validations: {
     firstName: {
@@ -82,7 +82,7 @@ export default {
     }
   },
   methods: {
-    generateObject() {
+    generateObject () {
       const formObject = {
         user: {
           first_name: this.firstName,
@@ -90,27 +90,27 @@ export default {
           email: this.email,
           password: this.password,
           password_confirmation: this.password,
-          locale: "es"
+          locale: 'es'
         }
-      };
-      return formObject;
+      }
+      return formObject
     },
-    async onSubmit() {
-      this.submitted = true;
+    async onSubmit () {
+      this.submitted = true
       if (!this.$v.$invalid) {
-        const userData = this.generateObject();
-        const response = await signUp(userData);
+        const userData = this.generateObject()
+        const response = await signUp(userData)
         if (response.ok) {
-          this.$router.push("/login");
+          this.$router.push('/login')
         } else {
-          debugger;
+          debugger
           this.formError =
-            response.data && response.data.error && response.data.error[0];
+            response.data && response.data.error && response.data.error[0]
         }
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
