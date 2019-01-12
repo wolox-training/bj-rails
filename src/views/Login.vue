@@ -32,6 +32,8 @@
       </div>
       <button class="primary-button">Login</button>
     </form>
+    <div class="horizontal-division"/>
+    <router-link to="/sign-up" class="secondary-button">Sign up</router-link>
   </div>
 </template>
 
