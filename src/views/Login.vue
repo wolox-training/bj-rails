@@ -76,6 +76,7 @@ export default {
         const response = await login(userData)
         if (response.ok) {
           setCurrentSession(response.data)
+          this.$router.push('/auth')
         } else {
           this.formError =
             response.data && response.data.error && response.data.error[0]
@@ -88,6 +89,7 @@ export default {
 
 <style lang="scss">
 @import "../scss/commons/colors.scss";
+
 .container {
   background-color: $light-grey;
   border: 1px solid $light-grey2;

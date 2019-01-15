@@ -19,6 +19,11 @@ export default new Router({
       component: Login
     },
     {
+      path: '/auth',
+      name: 'auth',
+      component: () => import('./views/Auth.vue')
+    },
+    {
       path: '/', redirect: '/login'
     }
   ]
