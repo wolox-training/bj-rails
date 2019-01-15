@@ -15,7 +15,7 @@
         <input
           id="email"
           v-model="email"
-          :class="['input', ($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : '']"
+          :class="{'input': true, 'error-input': ($v.email.$invalid && submitted) || !$v.email.email}"
         >
         <span class="error-label" v-if="!$v.email.email">El email no tiene un formato válido</span>
         <span class="error-label" v-if="!$v.email.required && submitted">Campo requerido</span>
@@ -26,7 +26,7 @@
           id="password"
           type="password"
           v-model="$v.password.$model"
-          :class="['input', $v.password.$error && ($v.password.required || submitted ) ? 'error-input': '']"
+          :class="{'input': true, 'error-input': $v.password.$error && ($v.password.required || submitted )}"
         >
         <span class="error-label" v-if="!$v.password.required && submitted">Campo requerido</span>
         <span
