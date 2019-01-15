@@ -41,7 +41,7 @@
       <button class="primary-button">Sign up</button>
     </form>
     <div class="horizontal-division"/>
-    <button class="secondary-button">Login</button>
+    <a class="secondary-button">Login</a>
   </div>
 </template>
 
@@ -98,7 +98,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../scss/commons/colors.scss";
 
 .container {
@@ -108,12 +108,12 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 100px;
-  padding: 0 15px;
+  padding: 15px;
   width: 300px;
 }
 
 .logo {
-  margin: 25px 0;
+  margin-bottom: 10px;
   object-fit: contain;
 }
 
