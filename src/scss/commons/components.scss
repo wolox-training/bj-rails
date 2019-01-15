@@ -26,7 +26,8 @@
   display: flex;
   justify-content: center;
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     color: $green;
   }
 }

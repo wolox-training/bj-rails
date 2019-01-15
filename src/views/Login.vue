@@ -41,7 +41,7 @@
       <button class="primary-button">Sign up</button>
     </form>
     <div class="horizontal-division"/>
-    <a class="secondary-button">Login</a>
+    <router-link class="secondary-button">Login</router-link>
   </div>
 </template>
 
