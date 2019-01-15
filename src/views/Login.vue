@@ -100,6 +100,7 @@ export default {
 
 <style lang="scss">
 @import "../scss/commons/colors.scss";
+
 .container {
   background-color: $light-grey;
   border: 1px solid $light-grey2;
