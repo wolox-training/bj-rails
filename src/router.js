@@ -16,7 +16,8 @@ export default new Router({
       component: () => import('./views/Login.vue')
     },
     {
-      path: '/', redirect: '/sign-up'
+      path: '/',
+      redirect: '/sign-up'
     }
   ]
 })
