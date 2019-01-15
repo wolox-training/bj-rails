@@ -62,7 +62,6 @@ export default {
   },
   methods: {
     onSubmit () {
-      console.log("You're in!")
     }
   }
 }

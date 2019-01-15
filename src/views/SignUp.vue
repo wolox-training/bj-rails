@@ -121,8 +121,9 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 100px;
+  max-width: 300px;
   padding: 0 15px;
-  width: 300px;
+  width: 100%;
 }
 
 .logo {
