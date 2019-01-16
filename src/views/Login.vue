@@ -57,7 +57,7 @@ export default {
         const response = await login(userData)
         if (response.ok) {
           setCurrentSession(response.data)
-          this.$router.push('/auth')
+          this.$router.push('/dashboard')
         } else {
           this.formError =
             response.data && response.data.error && response.data.error[0]
