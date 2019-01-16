@@ -48,6 +48,7 @@
 <script>
 import { required, email } from 'vuelidate/lib/validators'
 import { hasNumber, hasUppercase } from '@/utils/validations.js'
+import { signUp } from '@/services/auth'
 
 export default {
   name: 'home',
@@ -85,14 +86,19 @@ export default {
           first_name: this.firstName,
           last_name: this.lastName,
           email: this.email,
-          password: this.password
+          password: this.password,
+          password_confirmation: this.password,
+          locale: 'es'
         }
       }
       return formObject
     },
     onSubmit () {
       this.submitted = true
-      console.log(this.generateObject())
+      if (!this.$v.$invalid) {
+        const userData = this.generateObject()
+        signUp(userData)
+      }
     }
   }
 }
