@@ -7,7 +7,7 @@
 <script>
 import NavBar from './NavBar'
 import BooksList from './BooksList'
-import {getAllBooks} from '../services/books.js'
+import { getAllBooks } from '../services/books.js'
 
 export default {
   name: 'dashboard',
@@ -16,19 +16,17 @@ export default {
     BooksList
   },
   methods: {
-    async getBooksList() {
-      const response = await getAllBooks();
-      debugger
+    async getBooksList () {
+      const response = await getAllBooks()
       if (response.ok) {
-        debugger
         this.booksList = response.data
       }
     }
   },
-  mounted() {
+  mounted () {
     this.booksList = this.getBooksList()
   },
-  data() {
+  data () {
     return {
       booksList: null
     }
