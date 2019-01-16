@@ -4,19 +4,19 @@
     form(@submit.prevent='onSubmit')
       .input-container
         label.label(for='name') First name
-        input#firstName.input(v-model='firstName')
+        input.input(v-model='firstName')
       .input-container
         label.label(for='lastName') Last name
-        input#lastName.input(v-model='lastName')
+        input.input(v-model='lastName')
       .input-container
         label.label(for='email') Email
-        input#email(v-model='email',
+        input(v-model='email',
           :class="['input', ($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : '']")
         span.error-label(v-if='!$v.email.email') El email no tiene un formato válido
         span.error-label(v-if='!$v.email.required && submitted') Campo requerido
       .input-container
         label.label(for='password') Password
-        input#password(type='password',
+        input(type='password',
           v-model='$v.password.$model',
           :class="['input', $v.password.$error && ($v.password.required || submitted ) ? 'error-input ': '']")
         span.error-label(v-if='!$v.password.required && submitted') Campo requerido
