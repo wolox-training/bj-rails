@@ -1,7 +1,7 @@
 <template lang="pug">
   .container
     img.logo(src='../assets/wolox-logo.png')
-    form(@submit.prevent='onSubmit')
+    form.bottom-separator(@submit.prevent='onSubmit')
       .input-container
         label.label(for='name') First name
         input.input(v-model='firstName')
@@ -26,7 +26,6 @@
           | El password debe contener al menos una mayúscula
       span.error-label(v-if='formError') {{formError}}
       button.primary-button Sign up
-    .horizontal-division
     router-link.secondary-button(to='/login') Login
 </template>
 
@@ -109,21 +108,11 @@ export default {
   width: 300px;
 }
 
-.logo {
-  margin: 25px 0;
-  object-fit: contain;
-}
 
 .input-container {
   display: flex;
   flex-direction: column;
   margin: 15px auto;
   width: 100%;
-}
-
-.horizontal-division {
-  background-color: $light-grey3;
-  border: 1px solid $light-grey3;
-  margin: 5px 0;
 }
 </style>
