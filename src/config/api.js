@@ -11,7 +11,7 @@ export const CONTENT_TYPE = 'Content-Type'
 export const APP_JSON = 'application/json'
 
 export const API_DEFAULT_HEADERS = {
-  [AUTHORIZATION]: LocalStorageService.getSessionData(),
+  [AUTHORIZATION]: LocalStorageService.getSessionData()[AUTHORIZATION],
   [CONTENT_TYPE]: APP_JSON
 }
 
