@@ -1,40 +1,21 @@
-<template>
-  <div class="container">
-    <img src="../assets/wolox-logo.png" class="logo">
-    <form @submit.prevent="onSubmit">
-      <div class="input-container">
-        <label for="email" class="label">Email</label>
-        <input
-          id="email"
-          v-model="email"
-          :class="['input', ($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : '']"
-        >
-        <span class="error-label" v-if="!$v.email.email">El email no tiene un formato válido</span>
-        <span class="error-label" v-if="!$v.email.required && submitted">Campo requerido</span>
-      </div>
-      <div class="input-container">
-        <label for="password" class="label">Password</label>
-        <input
-          id="password"
-          type="password"
-          v-model="$v.password.$model"
-          :class="['input', $v.password.$error && ($v.password.required || submitted ) ? 'error-input': '']"
-        >
-        <span class="error-label" v-if="!$v.password.required && submitted">Campo requerido</span>
-        <span
-          class="error-label"
-          v-if="$v.password.$dirty && $v.password.required && !$v.password.hasNumber"
-        >El password debe contener al menos un número</span>
-        <span
-          class="error-label"
-          v-if="$v.password.$dirty && $v.password.required && !$v.password.hasUppercase"
-        >El password debe contener al menos una mayúscula</span>
-      </div>
-      <button class="primary-button">Login</button>
-    </form>
-    <div class="horizontal-division"/>
-    <router-link to="/sign-up" class="secondary-button">Sign up</router-link>
-  </div>
+<template lang="pug">
+  .container
+    img.logo(src='../assets/wolox-logo.png')
+    form(@submit.prevent='onSubmit')
+      .input-container
+        label.label(for='email') Email
+        input#email(v-model='email', :class="['input', ($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : '']")
+        span.error-label(v-if='!$v.email.email') El email no tiene un formato válido
+        span.error-label(v-if='!$v.email.required && submitted') Campo requerido
+      .input-container
+        label.label(for='password') Password
+        input#password(type='password', v-model='$v.password.$model', :class="['input', $v.password.$error && ($v.password.required || submitted ) ? 'error-input': '']")
+        span.error-label(v-if='!$v.password.required && submitted') Campo requerido
+        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasNumber') El password debe contener al menos un número
+        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasUppercase') El password debe contener al menos una mayúscula
+      button.primary-button Login
+    .horizontal-division
+    router-link.secondary-button(to='/sign-up') Sign up
 </template>
 
 <script>
