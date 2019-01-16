@@ -25,6 +25,11 @@
   color: $green;
   display: flex;
   justify-content: center;
+
+  &:focus,
+  &:active {
+    color: $green;
+  }
 }
 
 .bottom-separator {

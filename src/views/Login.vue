@@ -5,14 +5,14 @@
       .input-container
         label.label(for='email') Email
         input(v-model='email',
-          :class="['input', ($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : '']")
+          :class="{'input': true, 'error-input': ($v.email.$invalid && submitted) || !$v.email.email}")
         span.error-label(v-if='!$v.email.email') El email no tiene un formato válido
         span.error-label(v-if='!$v.email.required && submitted') Campo requerido
       .input-container
         label.label(for='password') Password
         input(type='password',
           v-model='$v.password.$model',
-          :class="['input', $v.password.$error && ($v.password.required || submitted ) ? 'error-input': '']")
+          :class="{'input': true, 'error-input': $v.password.$error && ($v.password.required || submitted )}")
         span.error-label(v-if='!$v.password.required && submitted') Campo requerido
         span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasNumber')
           | El password debe contener al menos un número
@@ -71,8 +71,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../scss/commons/colors.scss";
+
 .container {
   background-color: $light-grey;
   border: 1px solid $light-grey2;
@@ -80,7 +81,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 100px;
-  padding: 0 15px;
+  padding: 15px;
   width: 300px;
 }
 
