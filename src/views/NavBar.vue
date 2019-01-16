@@ -1,9 +1,8 @@
 <template lang="pug">
   .nav-bar
-    .items-container
-      img.logo(src='../assets/wolox-logo.png')
-      button.logout-button(@click='logout')
-        | Logout
+    img.navbar-logo(src='../assets/wolox-logo.png')
+    button.logout-button(@click='logout')
+      | Logout
 
 </template>
 
@@ -28,27 +27,23 @@ export default {
   background-color: $white;
   border-top: 5px solid $scooter;
   box-shadow: 0 3px 5px $shadow;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  max-height: 50px;
+  padding: 5px 20%;
   width: 100vw;
 
-  .items-container {
-    display: flex;
+  .navbar-logo {
     height: 100%;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-height: 50px;
-    max-width: 1280px;
-    padding: 5px 0;
+    margin: 0;
+  }
 
-    .logo {
-      margin: 0;
-    }
-
-    .logout-button {
-      background-color: $transparent;
-      border: 0;
-      color: $black;
-      font-weight: bold;
-    }
+  .logout-button {
+    background-color: $transparent;
+    border: 0;
+    color: $black;
+    font-weight: bold;
   }
 }
 </style>

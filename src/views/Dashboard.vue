@@ -1,18 +1,15 @@
 <template lang="pug">
   .dashboard-container
     nav-bar
-    book-list
 </template>
 
 <script>
 import NavBar from './NavBar'
-import BookList from './BookList'
 
 export default {
   name: 'dashboard',
   components: {
-    NavBar,
-    BookList
+    NavBar
   }
 }
 </script>
