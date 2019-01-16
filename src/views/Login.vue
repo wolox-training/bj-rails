@@ -21,7 +21,7 @@
 <script>
 import { required, email } from 'vuelidate/lib/validators'
 import { hasNumber, hasUppercase } from '@/utils/validations.js'
-import { login } from '@/services/auth'
+import { login, setCurrentSession } from '@/services/auth'
 
 export default {
   name: 'login',
@@ -56,7 +56,8 @@ export default {
         const userData = this.generateLoginObject()
         const response = await login(userData)
         if (response.ok) {
-          console.log(response.data.access_token)
+          setCurrentSession(response.data)
+          this.$router.push('/auth')
         } else {
           this.formError =
             response.data && response.data.error && response.data.error[0]
@@ -69,6 +70,7 @@ export default {
 
 <style lang="scss">
 @import "../scss/commons/colors.scss";
+
 .container {
   background-color: $light-grey;
   border: 1px solid $light-grey2;
