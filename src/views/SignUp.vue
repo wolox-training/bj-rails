@@ -10,15 +10,20 @@
         input#lastName.input(v-model='lastName')
       .input-container
         label.label(for='email') Email
-        input#email(v-model='email', :class="['input', ($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : '']")
+        input#email(v-model='email',
+          :class="['input', ($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : '']")
         span.error-label(v-if='!$v.email.email') El email no tiene un formato válido
         span.error-label(v-if='!$v.email.required && submitted') Campo requerido
       .input-container
         label.label(for='password') Password
-        input#password(type='password', v-model='$v.password.$model', :class="['input', $v.password.$error && ($v.password.required || submitted ) ? 'error-input': '']")
+        input#password(type='password',
+          v-model='$v.password.$model',
+          :class="['input', $v.password.$error && ($v.password.required || submitted ) ? 'error-input ': '']")
         span.error-label(v-if='!$v.password.required && submitted') Campo requerido
-        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasNumber') El password debe contener al menos un número
-        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasUppercase') El password debe contener al menos una mayúscula
+        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasNumber')
+          | El password debe contener al menos un número
+        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasUppercase')
+          | El password debe contener al menos una mayúscula
       span.error-label(v-if='formError') {{formError}}
       button.primary-button Sign up
     .horizontal-division
