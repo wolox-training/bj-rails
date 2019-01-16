@@ -1,6 +1,6 @@
 <template lang="pug">
   .container
-    img.logo(src='../assets/wolox-logo.png')
+    img.logo(src='../assets/wolox-logo.png', alt='wolox-books-logo')
     form.bottom-separator(@submit.prevent='onSubmit')
       .input-container
         label.label(for='email') Email
