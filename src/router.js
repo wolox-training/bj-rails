@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import SignUp from './views/SignUp.vue'
-import Login from './views/Login.vue'
-
 Vue.use(Router)
 
 export default new Router({
@@ -11,17 +8,12 @@ export default new Router({
     {
       path: '/sign-up',
       name: 'signUp',
-      component: SignUp
+      component: () => import('./views/SignUp.vue')
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
-    },
-    {
-      path: '/auth',
-      name: 'auth',
-      component: () => import('./views/NavBar.vue')
+      component: () => import('./views/Login.vue')
     },
     {
       path: '/dashboard',
@@ -29,7 +21,8 @@ export default new Router({
       component: () => import('./views/Dashboard.vue')
     },
     {
-      path: '/', redirect: '/login'
+      path: '/',
+      redirect: '/login'
     }
   ]
 })
