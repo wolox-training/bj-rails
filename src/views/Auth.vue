@@ -2,14 +2,22 @@
   .nav-bar
     .items-container
       img.logo(src='../assets/wolox-logo.png')
-      button.logout-button
+      button.logout-button(@click='logout')
         | Logout
 
 </template>
 
 <script>
+import { deleteCurrentSession } from '@/services/auth'
+
 export default {
-  name: 'auth'
+  name: 'auth',
+  methods: {
+    logout () {
+      deleteCurrentSession()
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 
