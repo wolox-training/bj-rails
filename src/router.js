@@ -19,9 +19,9 @@ export default new Router({
       component: Login
     },
     {
-      path: '/auth',
-      name: 'auth',
-      component: () => import('./views/Auth.vue')
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('./views/Dashboard.vue')
     },
     {
       path: '/', redirect: '/login'
