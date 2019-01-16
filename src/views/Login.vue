@@ -1,42 +1,85 @@
 <template>
   <div class="container">
     <img src="../assets/wolox-logo.png" class="logo">
-    <div class="input-container">
-      <label for="name" class="label">First name</label>
-      <input id="name" class="input" v-model="firstName">
-    </div>
-    <div class="input-container">
-      <label for="name" class="label">Last name</label>
-      <input id="name" class="input" v-model="lastName">
-    </div>
-    <div class="input-container">
-      <label for="name" class="label">Email</label>
-      <input id="name" class="input" v-model="email">
-    </div>
-    <div class="input-container">
-      <label for="name" class="label">Password</label>
-      <input id="name" class="input" v-model="password" type="password">
-    </div>
-    <button class="primaryButton" @click="printForm">Sign up</button>
+    <form @submit.prevent="onSubmit">
+      <div class="input-container">
+        <label for="name" class="label">First name</label>
+        <input id="firstName" v-model="firstName" class="input">
+      </div>
+      <div class="input-container">
+        <label for="lastName" class="label">Last name</label>
+        <input id="lastName" v-model="lastName" class="input">
+      </div>
+      <div class="input-container">
+        <label for="email" class="label">Email</label>
+        <input
+          id="email"
+          v-model="email"
+          :class="{'input': true, 'error-input': ($v.email.$invalid && submitted) || !$v.email.email}"
+        >
+        <span class="error-label" v-if="!$v.email.email">El email no tiene un formato válido</span>
+        <span class="error-label" v-if="!$v.email.required && submitted">Campo requerido</span>
+      </div>
+      <div class="input-container">
+        <label for="password" class="label">Password</label>
+        <input
+          id="password"
+          type="password"
+          v-model="$v.password.$model"
+          :class="{'input': true, 'error-input': $v.password.$error && ($v.password.required || submitted )}"
+        >
+        <span class="error-label" v-if="!$v.password.required && submitted">Campo requerido</span>
+        <span
+          class="error-label"
+          v-if="$v.password.$dirty && $v.password.required && !$v.password.hasNumber"
+        >El password debe contener al menos un número</span>
+        <span
+          class="error-label"
+          v-if="$v.password.$dirty && $v.password.required && !$v.password.hasUppercase"
+        >El password debe contener al menos una mayúscula</span>
+      </div>
+      <button class="primary-button">Sign up</button>
+    </form>
     <div class="horizontal-division"/>
-    <a :class="'secondaryButton'">Login</a>
+    <router-link class="secondary-button">Login</router-link>
   </div>
 </template>
 
 <script>
+import { required, email } from 'vuelidate/lib/validators'
+import { hasNumber, hasUppercase } from '@/utils/validations.js'
+
 export default {
-  name: "home",
+  name: 'home',
   components: {},
-  data() {
+  data () {
     return {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null
-    };
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      submitted: false
+    }
+  },
+  validations: {
+    firstName: {
+      required
+    },
+    lastName: {
+      required
+    },
+    email: {
+      required,
+      email
+    },
+    password: {
+      required,
+      hasNumber,
+      hasUppercase
+    }
   },
   methods: {
-    generateObject() {
+    generateObject () {
       const formObject = {
         user: {
           first_name: this.firstName,
@@ -44,14 +87,15 @@ export default {
           email: this.email,
           password: this.password
         }
-      };
-      return formObject;
+      }
+      return formObject
     },
-    printForm() {
-      console.log(this.generateObject());
+    onSubmit () {
+      this.submitted = true
+      console.log(this.generateObject())
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -63,19 +107,20 @@ export default {
   border-top: 5px solid $scooter;
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
+  margin: 100px;
+  padding: 15px;
   width: 300px;
 }
 
 .logo {
-  margin: 25px 0;
+  margin-bottom: 10px;
   object-fit: contain;
 }
 
 .input-container {
   display: flex;
   flex-direction: column;
-  margin: 10px auto;
+  margin: 15px auto;
   width: 100%;
 }
 

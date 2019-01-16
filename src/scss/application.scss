@@ -1,1 +1,10 @@
-@import "commons/components"
+@import '~wolox-equalizer/equalizer';
+@import "commons/components";
+
+body {
+  display: flex;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  justify-content: center;
+  text-align: center;
+}
