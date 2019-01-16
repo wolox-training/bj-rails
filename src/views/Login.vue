@@ -32,12 +32,15 @@
       </div>
       <button class="primary-button">Login</button>
     </form>
+    <div class="horizontal-division"/>
+    <router-link to="/sign-up" class="secondary-button">Sign up</router-link>
   </div>
 </template>
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
 import { hasNumber, hasUppercase } from '@/utils/validations.js'
+import { login } from '@/services/auth'
 
 export default {
   name: 'login',
@@ -61,7 +64,23 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
+    generateLoginObject () {
+      return {
+        email: this.email,
+        password: this.password
+      }
+    },
+    async onSubmit () {
+      if (!this.$v.$invalid) {
+        const userData = this.generateLoginObject()
+        const response = await login(userData)
+        if (response.ok) {
+          console.log(response.data.access_token)
+        } else {
+          this.formError =
+            response.data && response.data.error && response.data.error[0]
+        }
+      }
     }
   }
 }

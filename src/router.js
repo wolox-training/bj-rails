@@ -17,7 +17,7 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: '/sign-up'
+      redirect: '/login'
     }
   ]
 })
