@@ -11,7 +11,7 @@
 import { deleteCurrentSession } from '@/services/auth'
 
 export default {
-  name: 'auth',
+  name: 'navBar',
   methods: {
     logout () {
       deleteCurrentSession()
@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import "../scss/commons/colors.scss";
 
 .nav-bar {
@@ -36,7 +36,7 @@ export default {
     justify-content: space-between;
     margin: 0 auto;
     max-height: 50px;
-    max-width: 1080px;
+    max-width: 1280px;
     padding: 5px 0;
 
     .logo {
