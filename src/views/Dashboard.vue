@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import NavBar from './NavBar'
+import NavBar from '@/components/NavBar'
 import BooksList from './BooksList'
 import { getAllBooks } from '../services/books.js'
 
@@ -35,14 +35,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/commons/colors.scss';
+@import 'src/scss/commons/colors';
 
 .dashboard-container {
   align-items: center;
   display: flex;
   flex-direction: column;
   background-color: $light-grey;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
 

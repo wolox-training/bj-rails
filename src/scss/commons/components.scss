@@ -3,7 +3,7 @@
 %base-button {
   font-weight: bold;
   height: 40px;
-  margin: 10px 0;
+  margin: 15px 0;
   outline: 0;
   width: 100%;
 }
@@ -32,6 +32,10 @@
   }
 }
 
+.bottom-separator {
+  border-bottom: 1px solid $light-grey3;
+}
+
 .label {
   align-self: flex-start;
   font-size: 14px;
@@ -55,4 +59,9 @@
 
 .error-input {
   border: 1px solid $red;
+}
+
+.logo {
+  margin: 25px 0;
+  object-fit: contain;
 }

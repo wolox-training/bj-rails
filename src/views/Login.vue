@@ -1,20 +1,39 @@
 <template lang="pug">
   .login-container
-    img.logo(src='../assets/wolox-logo.png')
-    form(@submit.prevent='onSubmit')
+    img.logo(src='../assets/wolox-logo.png' alt='wolox-books-logo')
+    form.bottom-separator(@submit.prevent='onSubmit')
       .input-container
-        label.label(for='email') Email
-        input#email(v-model='email', :class="['input', ($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : '']")
-        span.error-label(v-if='!$v.email.email') El email no tiene un formato válido
-        span.error-label(v-if='!$v.email.required && submitted') Campo requerido
+        label.label(for='email')
+          | Email
+        input(
+          v-model='email'
+          type='email'
+          class='input'
+          :class="{'error-input': ($v.email.$invalid && submitted) || !$v.email.email}"
+        )
+        span.error-label(v-if='!$v.email.email')
+          | El email no tiene un formato válido
+        span.error-label(v-if='!$v.email.required && submitted')
+          | Campo requerido
       .input-container
-        label.label(for='password') Password
-        input#password(type='password', v-model='$v.password.$model', :class="['input', $v.password.$error && ($v.password.required || submitted ) ? 'error-input': '']")
-        span.error-label(v-if='!$v.password.required && submitted') Campo requerido
-        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasNumber') El password debe contener al menos un número
-        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasUppercase') El password debe contener al menos una mayúscula
-      button.primary-button Login
-    router-link.secondary-button(to='/sign-up') Sign up
+        label.label(for='password')
+          | Password
+        input(
+          v-model='$v.password.$model'
+          type='password'
+          class='input'
+          :class="{'error-input': $v.password.$error && ($v.password.required || submitted )}"
+        )
+        span.error-label(v-if='!$v.password.required && submitted')
+          | Campo requerido
+        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasNumber')
+          | El password debe contener al menos un número
+        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasUppercase')
+          | El password debe contener al menos una mayúscula
+      button.primary-button
+        | Login
+    router-link.secondary-button(to='/sign-up')
+      | Sign up
 </template>
 
 <script>
@@ -68,7 +87,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/commons/colors.scss";
+@import "src/scss/commons/colors";
 
 .login-container {
   background-color: $light-grey;
@@ -77,13 +96,8 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 100px;
-  padding: 15px;
+  padding: 0 15px;
   width: 300px;
-}
-
-.logo {
-  margin-bottom: 10px;
-  object-fit: contain;
 }
 
 .input-container {
@@ -91,11 +105,5 @@ export default {
   flex-direction: column;
   margin: 15px auto;
   width: 100%;
-}
-
-.horizontal-division {
-  background-color: $light-grey3;
-  border: 1px solid $light-grey3;
-  margin: 5px 0;
 }
 </style>
