@@ -1,49 +1,49 @@
-<template>
-  <div class="container">
-    <img src="../assets/wolox-logo.png" class="logo">
-    <form @submit.prevent="onSubmit">
-      <div class="input-container">
-        <label for="name" class="label">First name</label>
-        <input id="firstName" v-model="firstName" class="input">
-      </div>
-      <div class="input-container">
-        <label for="lastName" class="label">Last name</label>
-        <input id="lastName" v-model="lastName" class="input">
-      </div>
-      <div class="input-container">
-        <label for="email" class="label">Email</label>
-        <input
-          id="email"
-          v-model="email"
-          :class="['input', ($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : '']"
-        >
-        <span class="error-label" v-if="!$v.email.email">El email no tiene un formato válido</span>
-        <span class="error-label" v-if="!$v.email.required && submitted">Campo requerido</span>
-      </div>
-      <div class="input-container">
-        <label for="password" class="label">Password</label>
-        <input
-          id="password"
-          type="password"
-          v-model="$v.password.$model"
-          :class="['input', $v.password.$error && ($v.password.required || submitted ) ? 'error-input': '']"
-        >
-        <span class="error-label" v-if="!$v.password.required && submitted">Campo requerido</span>
-        <span
-          class="error-label"
-          v-if="$v.password.$dirty && $v.password.required && !$v.password.hasNumber"
-        >El password debe contener al menos un número</span>
-        <span
-          class="error-label"
-          v-if="$v.password.$dirty && $v.password.required && !$v.password.hasUppercase"
-        >El password debe contener al menos una mayúscula</span>
-      </div>
-      <span class="error-label" v-if="formError">{{formError}}</span>
-      <button class="primary-button">Sign up</button>
-    </form>
-    <div class="horizontal-division"/>
-    <router-link to="/login" class="secondary-button">Login</router-link>
-  </div>
+<template lang="pug">
+  .container
+    img.logo(src='../assets/wolox-logo.png' alt='wolox-books-logo')
+    form.bottom-separator(@submit.prevent='onSubmit')
+      .input-container
+        label.label(for='name')
+          | First name
+        input.input(v-model='firstName')
+      .input-container
+        label.label(for='lastName')
+          | Last name
+        input.input(v-model='lastName')
+      .input-container
+        label.label(for='email')
+          | Email
+        input(
+          v-model='email'
+          type='email'
+          class='input'
+          :class="($v.email.$invalid && submitted) || !$v.email.email ? 'error-input' : ''"
+        )
+        span.error-label(v-if='!$v.email.email')
+          | El email no tiene un formato válido
+        span.error-label(v-if='!$v.email.required && submitted')
+          | Campo requerido
+      .input-container
+        label.label(for='password')
+          | Password
+        input(
+          v-model='$v.password.$model'
+          type='password'
+          class='input'
+          :class="$v.password.$error && ($v.password.required || submitted ) ? 'error-input ': ''"
+        )
+        span.error-label(v-if='!$v.password.required && submitted')
+          | Campo requerido
+        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasNumber')
+          | El password debe contener al menos un número
+        span.error-label(v-if='$v.password.$dirty && $v.password.required && !$v.password.hasUppercase')
+          | El password debe contener al menos una mayúscula
+      span.error-label(v-if='formError')
+        | {{formError}}
+      button.primary-button
+        | Sign up
+    router-link.secondary-button(to='/login')
+      | Login
 </template>
 
 <script>
@@ -126,21 +126,10 @@ export default {
   width: 100%;
 }
 
-.logo {
-  margin: 25px 0;
-  object-fit: contain;
-}
-
 .input-container {
   display: flex;
   flex-direction: column;
   margin: 15px auto;
   width: 100%;
-}
-
-.horizontal-division {
-  background-color: $light-grey3;
-  border: 1px solid $light-grey3;
-  margin: 5px 0;
 }
 </style>
