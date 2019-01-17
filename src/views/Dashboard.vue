@@ -6,8 +6,8 @@
 
 <script>
 import NavBar from '@/components/NavBar'
-import BooksList from './BooksList'
-import { getAllBooks } from '../services/books.js'
+import BooksList from '@/components/BooksList'
+import { getAllBooks } from '@/services/books.js'
 
 export default {
   name: 'dashboard',
