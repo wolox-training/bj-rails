@@ -3,7 +3,6 @@
     img.navbar-logo(src='../assets/wolox-logo.png')
     button.logout-button(@click='logout')
       | Logout
-
 </template>
 
 <script>
