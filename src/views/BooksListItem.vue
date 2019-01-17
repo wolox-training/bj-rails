@@ -1,6 +1,6 @@
 <template lang="pug">
   .book-detail-container
-    img.book-image(:src='book.image_url')
+    img.book-image(:src='book.image_url' alt='book-cover-image')
     h3.title
       | {{ book.title }}
     h4.subtitle
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/commons/colors.scss';
+@import 'src/scss/commons/colors.scss';
 
 .book-detail-container {
   align-items: flex-start;
@@ -42,15 +42,13 @@ export default {
     color: $black;
     font-size: 20px;
     font-weight: bold;
-    line-height: 1;
-    text-align: start;
+    text-align: left;
   }
 
   .subtitle {
     font-size: 16px;
     line-height: 1;
-    text-align: start;
+    text-align: left;
   }
 }
-
 </style>

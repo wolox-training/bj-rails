@@ -15,4 +15,6 @@ export const API_DEFAULT_HEADERS = {
   [CONTENT_TYPE]: APP_JSON
 }
 
+api.setHeaders(API_DEFAULT_HEADERS)
+
 export default api
