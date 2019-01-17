@@ -1,5 +1,5 @@
 import { create } from 'apisauce'
-import LocalStorageService from '../services/localStorage'
+import LocalStorageService from '@/services/localStorage'
 
 const api = create({
   baseURL: process.env.VUE_APP_BASE_URL
