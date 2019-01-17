@@ -113,7 +113,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../scss/commons/colors.scss";
+@import "src/scss/commons/colors";
 .container {
   background-color: $light-grey;
   border: 1px solid $light-grey2;
