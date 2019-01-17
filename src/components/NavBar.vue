@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped >
-@import "../scss/commons/colors.scss";
+@import "src/scss/commons/colors";
 
 .nav-bar {
   background-color: $white;
@@ -36,6 +36,7 @@ export default {
   .navbar-logo {
     height: 100%;
     margin: 0;
+    max-height: 35px;
   }
 
   .logout-button {

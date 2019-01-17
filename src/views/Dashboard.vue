@@ -14,14 +14,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/commons/colors.scss';
+@import 'src/scss/commons/colors';
 
 .dashboard-container {
   align-items: center;
   display: flex;
   flex-direction: column;
   background-color: $light-grey;
-  height: 100vh;
+  height: auto;
   width: 100vw;
 }
 
