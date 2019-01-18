@@ -10,8 +10,10 @@ export const ACCESS_TOKEN = 'access_token'
 export const CONTENT_TYPE = 'Content-Type'
 export const APP_JSON = 'application/json'
 
+const sessionData = LocalStorageService.getSessionData()
+
 export const API_DEFAULT_HEADERS = {
-  [AUTHORIZATION]: LocalStorageService.getSessionData()[AUTHORIZATION],
+  [AUTHORIZATION]: sessionData ? sessionData[AUTHORIZATION] : null,
   [CONTENT_TYPE]: APP_JSON
 }
 
