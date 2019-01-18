@@ -9,7 +9,6 @@
 import { deleteCurrentSession } from '@/services/auth'
 
 export default {
-  name: 'navBar',
   methods: {
     logout () {
       deleteCurrentSession()

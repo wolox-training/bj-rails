@@ -1,5 +1,5 @@
 <template lang="pug">
-  .container
+  .login-container
     img.logo(src='../assets/wolox-logo.png' alt='wolox-books-logo')
     form.bottom-separator(@submit.prevent='onSubmit')
       .input-container
@@ -89,7 +89,7 @@ export default {
 <style lang="scss" scoped>
 @import "src/scss/commons/colors";
 
-.container {
+.login-container {
   background-color: $light-grey;
   border: 1px solid $light-grey2;
   border-top: 5px solid $scooter;
