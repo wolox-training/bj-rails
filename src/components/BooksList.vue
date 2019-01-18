@@ -1,6 +1,6 @@
 <template lang="pug">
   .books-list-container
-    books-list-item(v-for='book in booksList' :book='book')
+    books-list-item(v-for='book in booksList' :key='book.id' :book='book')
 </template>
 
 <script>

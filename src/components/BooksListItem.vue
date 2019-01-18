@@ -32,9 +32,9 @@ export default {
   width: 100%;
 
   .book-image {
-    height: 100%;
     max-height: 170px;
     max-width: 200px;
+    object-fit: cover;
     width: 100%;
   }
 
