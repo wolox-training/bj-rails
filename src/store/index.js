@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import Books from '@/vuex/books'
+import Books from '@/store/modules/books'
 
 Vue.use(Vuex)
 
