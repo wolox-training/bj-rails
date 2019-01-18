@@ -1,16 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import Books from '@/vuex/books'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
+  modules: {
+    books: Books
   }
 })

@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 import NavBar from '@/components/NavBar'
 import BooksList from '@/components/BooksList'
 import { getAllBooks } from '@/services/books.js'
@@ -16,20 +18,17 @@ export default {
     BooksList
   },
   methods: {
-    async getBooksList () {
-      const response = await getAllBooks()
-      if (response.ok) {
-        this.booksList = response.data
-      }
-    }
+    ...mapActions([
+      'getBooksList'
+    ])
   },
   mounted () {
-    this.booksList = this.getBooksList()
+    this.getBooksList()
   },
-  data () {
-    return {
-      booksList: null
-    }
+  computed: {
+    ...mapGetters([
+      'booksList'
+    ])
   }
 }
 </script>
