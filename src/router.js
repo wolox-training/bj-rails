@@ -21,6 +21,11 @@ export default new Router({
       component: () => import('./views/Dashboard.vue')
     },
     {
+      path: '/books/:id',
+      name: 'book-detail',
+      component: () => import('./views/BookDetail.vue')
+    },
+    {
       path: '/',
       redirect: '/login'
     }

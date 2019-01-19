@@ -1,5 +1,10 @@
 @import './colors.scss';
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 %base-button {
   font-weight: bold;
   height: 40px;
